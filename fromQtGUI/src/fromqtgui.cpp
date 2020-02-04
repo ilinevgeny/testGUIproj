@@ -34,21 +34,33 @@ fromQtGUI::fromQtGUI(QWidget *parent)
 	searchLayout->addWidget(searchLine);
 
 	QPushButton *searchBtn = new QPushButton(this);
-	searchBtn->setText(u8"Добавить прибор!!");
+	searchBtn->setText(u8"Добавить прибор_");
 	searchBtn->setFixedHeight(30);
 	searchBtn->setFixedWidth(150);
 	searchLayout->addWidget(searchBtn);
 	searchLayout->addSpacing(800);
 
+	this->configxTbl = new QTableView();
+	this->conceptxTbl = new QTableView();
+	this->setxTbl = new QTableView();
+	this->mainTLayout = new QBoxLayout(QBoxLayout::LeftToRight);
+
+	this->mainTLayout->addWidget(this->configxTbl);
+	this->mainTLayout->addWidget(this->conceptxTbl);
+	this->mainTLayout->addWidget(this->setxTbl);
+	
 	QBoxLayout* btnLayout = new QBoxLayout(QBoxLayout::LeftToRight);
-	btnLayout->addSpacing(100);
+	btnLayout->addSpacing(1200);
 	btnLayout->addWidget(this->generateB);
 
 	QBoxLayout* bxLayout = new QBoxLayout(QBoxLayout::TopToBottom, pFrame);
 
+	
+	
 	bxLayout->addLayout(searchLayout);
-	//bxLayout->addLayout(this->mainTLayout);
+	bxLayout->addLayout(this->mainTLayout);
 	bxLayout->addLayout(btnLayout);
+	
 
 	QBoxLayout *statusLayout = new QBoxLayout(QBoxLayout::LeftToRight);
 	this->status = new QTextEdit(this);
